@@ -1,0 +1,27 @@
+{
+  "name": "MUI",
+  "version": "1.0.0",
+  "description": "A UI framework by muxi team for developing responsive,mobile project on the web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muxi-Studio/MUI.git"
+  },
+    "keyword" : [
+    "MUI",
+    "css",
+    "sass",
+    "framework",
+    "responsive"
+  ],
+  "author": "Muxi-Studio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Muxi-Studio/MUI/issues"
+  },
+  "homepage": "https://github.com/Muxi-Studio/MUI#readme"
+}
+
