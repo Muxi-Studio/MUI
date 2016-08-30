@@ -4,15 +4,19 @@
   "description": "A UI framework by muxi team for developing responsive,mobile project on the web",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "docs": "webpack-dev-server --inline --hot --quiet",
+    "buildDocs": "webpack --progress --hide-modules && set NODE_ENV=production webpack --progress --hide-modules",
+    "build": "webpack --progress --hide-modules --config  webpack.build.js ",
+    "buildmin": "set NODE_ENV=production webpack --progress --hide-modules --config webpack.build.js",
+    "dev" : "webpack-dev-server --inline --hot --quiet --config webpack.build.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Muxi-Studio/MUI.git"
   },
-    "keyword" : [
+  "keyword": [
     "MUI",
-    "css",
+    "vue",
     "sass",
     "framework",
     "responsive"
@@ -22,6 +26,21 @@
   "bugs": {
     "url": "https://github.com/Muxi-Studio/MUI/issues"
   },
-  "homepage": "https://github.com/Muxi-Studio/MUI#readme"
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-runtime": "^6.12.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-runtime": "^6.11.6",
+    "css-loader": "^0.24.0",
+    "node-sass": "^3.8.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "vue-hot-reload-api": "^2.0.6",
+    "vue-html-loader": "^1.2.3",
+    "vue-loader": "^8.5.2",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.0",
+    "webpack-hot-middleware": "^2.12.2"
+  }
 }
-
