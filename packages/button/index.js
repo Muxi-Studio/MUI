@@ -1,0 +1,1 @@
+var button = require('./src/button.vue')
