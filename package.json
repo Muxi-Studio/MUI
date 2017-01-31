@@ -2,18 +2,38 @@
   "name": "muife",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/mui.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muxi-Studio/MUI_FE.git"
+  },
+  "author": "MFE",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Muxi-Studio/MUI_FE/issues"
+  },
+  "homepage": "https://github.com/Muxi-Studio/MUI_FE#readme",
   "dependencies": {
-    "babel": "^6.5.2",
-    "babel-core": "^6.18.2",
-    "babel-loader": "^6.2.8",
-    "babel-plugin-transform-runtime": "^6.15.0",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-stage-2": "^6.18.0"
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-runtime": "^6.12.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-runtime": "^6.11.6",
+    "css-loader": "^0.24.0",
+    "node-sass": "^3.8.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "vue": "^2.1.8",
+    "vue-hot-reload-api": "^1.3.3",
+    "vue-html-loader": "^1.2.3",
+    "vue-loader": "^8.6.1",
+    "vue-style-loader": "^2.0.0"
+  },
+  "devDependencies": {
+    "webpack": "^2.2.1"
   }
 }

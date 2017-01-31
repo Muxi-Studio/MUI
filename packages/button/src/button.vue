@@ -1,29 +1,31 @@
 <template>
+<div>
   <button class="mui-button"
-    @click="handleClick"
-    :class="[
-      type ? 'mui-button--' + type : '',
-      size ? 'mui-button--' + size : ''
-    ]"
-  >
+    v-on:click="handleClick">
   </button>
+</div>
 </template>
 <script>
   export default {
     name: 'MButton',
 
-    props: {
-      type: {
-        type: String,
-        default: 'default'
-      },
-      size: String
-    },
-
-    methods: {
-      handleClick(evt) {
-        this.$emit('click', evt);
+    data(){
+      return{
+        button:1
       }
     }
+
+    // props: {
+    //   type: {
+    //     type: String,
+    //     default: 'default'
+    //   }
+    // },
+
+    // methods: {
+    //   handleClick(evt) {
+    //     this.$emit('click', evt);
+    //   }
+    // }
   };
 </script>
