@@ -10,7 +10,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/dist/',
         filename: '[name]',
-        library: 'mui',
+        library: 'Muxiui',
         libraryTarget: 'umd',
         umdNamedDefine: true
     },
@@ -51,7 +51,6 @@ module.exports = {
         new webpack.NoEmitOnErrorsPlugin()
     ],
     devServer: {
-        contentBase: path.join(__dirname, "dist"),
         compress: false,
         port: 9000
     },

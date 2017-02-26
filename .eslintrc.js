@@ -1,10 +1,15 @@
 module.exports = {
-  extends: 'airbnb',
-  rules: {
-    semi: [2, 'never'],
-    quotes: [2, "double"],
-  },
-  env: {
-    browser: 1,
-  },
-}
+    "extends": "airbnb-base",
+    "plugins": [
+        "import",
+        "html"
+    ],
+    "rules": {
+        "semi": [2, 'never'],
+        "quotes": [2, "double"],
+        "indent": ["error", 4]
+    },
+    "env": {
+        browser: 1,
+    }
+};

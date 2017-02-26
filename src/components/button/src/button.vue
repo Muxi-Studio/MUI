@@ -1,19 +1,16 @@
 <template>
-<div>
-  <button class="mui-button"
-    v-on:click="handleClick">
-  </button>
-</div>
+    <button class="mui-button" v-on:click="handleClick">
+    </button>
 </template>
 <script>
-  export default {
-    name: 'MButton',
+export default {
+    name: "m-button",
 
-    data(){
-      return{
-        button:1
-      }
-    }
+    data() {
+        return {
+            button: 1,
+        }
+    },
 
     // props: {
     //   type: {
@@ -27,5 +24,5 @@
     //     this.$emit('click', evt);
     //   }
     // }
-  };
+}
 </script>
