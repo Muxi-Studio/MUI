@@ -1,5 +1,5 @@
 <template>
-    <button :class="'m-button ' + 'm-button--' + this.type">
+    <button :class="'m-button ' + 'm-button--' + this.type" @click="this.onClick">
         <slot></slot>
     </button>
 </template>
@@ -10,6 +10,10 @@ export default {
         type: {
             type: String,
             default: "primary",
+        },
+        onClick: {
+            type: Function,
+            default: () => {},
         },
     },
 }
@@ -26,7 +30,7 @@ export default {
     padding-right: 26px;
     font-size: $fontsize-button;
     position: relative;
-    z-index:1;
+    z-index: 1;
     overflow: hidden;
     &::before {
         content: "";
@@ -37,9 +41,9 @@ export default {
         left: 0;
         top: 0;
         z-index: -1;
-        transtion:all 1s;
-        border-radius:3px;
-        transform:translateY(-2px);
+        transtion: all 1s;
+        border-radius: 3px;
+        transform: translateY(-2px);
     }
     &--primary {
         background-color: $primary-darkest;
@@ -47,17 +51,22 @@ export default {
     &--primary::before {
         background-color: $primary-darker;
     }
-    &--primary:hover::before {
-      transform:translateY(0px);
-    }
     &--warning {
         background-color: $warning-color;
     }
     &--error {
+        background-color: $error-color-darker;
+    }
+    &--error::before {
         background-color: $error-color;
     }
     &--ghost {
         background-color: $error-color;
+    }
+    &--primary:hover::before,
+    &--error:hover::before,
+    &--warning:hover::before {
+        transform: translateY(0px);
     }
 }
 </style>
