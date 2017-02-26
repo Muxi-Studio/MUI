@@ -1,4 +1,4 @@
-## MUI
+## MUI ![ci](https://travis-ci.org/Muxi-Studio/MUI.svg?branch=master)
 
 Muxi UI is an UI Component collection for developing PC web applications, based on Vuejs.
 
