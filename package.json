@@ -4,9 +4,10 @@
   "description": "",
   "main": "dist/mui.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js",
-    "dev": "node_modules/.bin/webpack-dev-server"
+    "dev": "node_modules/.bin/webpack-dev-server",
+    "test": "npm run lint",
+    "lint": "node_modules/.bin/eslint src --quiet"
   },
   "repository": {
     "type": "git",
