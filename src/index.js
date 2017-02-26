@@ -1,4 +1,4 @@
-import Button from '../packages/button';
+import Button from './components/button';
 import Vue from	'vue'
 
 

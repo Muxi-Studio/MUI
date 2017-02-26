@@ -3,12 +3,13 @@ var webpack = require('webpack');
 
 module.exports = {
     entry: {
-        main: './src/index.js'
+        'main.js': './src/index.js',
+        'style.js': './src/style.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/dist/',
-        filename: 'mui.js',
+        filename: '[name]',
         library: 'mui',
         libraryTarget: 'umd',
         umdNamedDefine: true
@@ -25,7 +26,7 @@ module.exports = {
         extensions: ['.js', '.vue']
     },
     module: {
-        loaders: [{
+        rules: [{
             test: /\.vue$/,
             loader: 'vue-loader'
         }, {
@@ -47,24 +48,12 @@ module.exports = {
         }]
     },
     plugins: [
-      new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin()
     ],
+    devServer: {
+        contentBase: path.join(__dirname, "dist"),
+        compress: false,
+        port: 9000
+    },
     devtool: 'source-map'
 }
-
-
-// if (process.env.NODE_ENV === 'production') {
-//   delete module.exports.devtool;
-//   module.exports.plugins = [
-//     new webpack.DefinePlugin({
-//       'process.env': {
-//         NODE_ENV: '"production"'
-//       }
-//     }),
-//     new webpack.optimize.UglifyJsPlugin({
-//       compress: {
-//         warnings: false
-//       }
-//     })
-//   ];
-// }
