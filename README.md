@@ -8,23 +8,52 @@ Designed by MED(Muxi UED).
 
 + Add scss structure, and scss config for webpack
 + Build a demo page, like [this](http://element.eleme.io)
++ Grid system
++ Develop all the component
 
 ### Basic Usage
 
+#### Using Standalone Bundle(CDN)
+
+```
+<script src="./lib/vue.js"></script>
+<script src="./dist/main.js"></script> // script tag should be put after vuejs
+<script src="./dist/style.js"></script>
+```
+
+#### Using NPM
+
+Intall MUI using
+
 `npm install muxiui`
 
+Then
+
+```
+import MUI from "muxiui"
+
+Vue.use(MUI)
+
+```
+
+### Documentation
+
+Working on it
 
 ### Development
 
-`npm run whatever`
+`npm install`
+
+`npm run dev`
+
+webpack-dev-server will run on port 9000, so we can get bundle with `http://localhost:9000/dist/main.js`(Component code) and `http://localhost:9000/dist/style.js`(Style), without losing the power of hot reloading.
+
+[Demo repo](https://github.com/Muxi-Studio/muxiui), you can use this repo to test your code.
 
 ### Contributor 
 
-Design 
+Special thanks to our Designer [CAMOCAT](http://camocat.me)!
 
-+ [CAMOCAT](http://camocat.me)
-
-Code
 
 + [Amanda111](https://github.com/amanda111)
 + [stephenLYao](https://github.com/stephenLYao)

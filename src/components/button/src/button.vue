@@ -16,6 +16,7 @@ export default {
 </script>
 <style lang="scss">
 @import '../../../scss/common/color.scss';
+@import '../../../scss/common/font.scss';
 .m-button {
     display: inline-block;
     line-height: 40px;
@@ -23,7 +24,7 @@ export default {
     color: #fff;
     padding-left: 26px;
     padding-right: 26px;
-    font-size: 16px;
+    font-size: $fontsize-button;
     position: relative;
     z-index:1;
     overflow: hidden;
