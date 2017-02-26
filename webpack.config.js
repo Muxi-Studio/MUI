@@ -28,7 +28,13 @@ module.exports = {
     module: {
         rules: [{
             test: /\.vue$/,
-            loader: 'vue-loader'
+            loader: 'vue-loader',
+            options: {
+                loaders: {
+                    scss: 'vue-style-loader!css-loader!sass-loader', // <style lang="scss">
+                    sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax' // <style lang="sass">
+                }
+            },
         }, {
             test: /\.js$/,
             loader: 'babel-loader',
@@ -38,7 +44,7 @@ module.exports = {
             loader: 'style!css!autoprefixer'
         }, {
             test: /\.scss$/,
-            loader: 'style!css!sass'
+            loader: 'style-loader!css-loader!sass-loader'
         }, {
             test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
             loader: 'url?limit=8192'
