@@ -46,26 +46,40 @@ export default {
         transform: translateY(-2px);
     }
     &--primary {
-        background-color: $primary-darkest;
+        background-color: mix(rgba(0, 0, 0, 0.8), $primary-darker);
     }
     &--primary::before {
         background-color: $primary-darker;
     }
     &--warning {
+        background-color: mix(rgba(0, 0, 0, 0.8), $warning-color);
+    }
+    &--warning::before {
         background-color: $warning-color;
     }
     &--error {
-        background-color: $error-color-darker;
+        background-color: mix(rgba(0, 0, 0, 0.8), $error-color);
     }
     &--error::before {
         background-color: $error-color;
     }
     &--ghost {
-        background-color: $error-color;
+        color: $secondary-color;
+        background-color: $secondary-color;
+        border:1px solid $secondary-color;
+    }
+    &--ghost:hover{
+        color: $primary-middium;
+        border:1px solid $primary-middium;
+        background-color: $primary-middium;
+    }
+    &--ghost::before {
+        background-color: #fff
     }
     &--primary:hover::before,
     &--error:hover::before,
-    &--warning:hover::before {
+    &--warning:hover::before,
+    &--ghost:hover::before{
         transform: translateY(0px);
     }
 }
