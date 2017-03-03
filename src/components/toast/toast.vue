@@ -32,13 +32,28 @@ export default {
     left: 50%;
     top:20px;
     transform:translateX(-50%);
-    height:52px;
+    height:50px;
     padding-left:128px;
     padding-right:128px;
+    border-radius: 3px;
+    z-index: 1;
+    overflow: hidden;
     &:before{
-
+        background-color: #fff;
+        content: "";
+        width: 100%;
+        display: block;
+        height: 50px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        transtion: all 1s;
+        border-radius: 3px;
+        transform: translateY(-3px);
     }
     &--primary{
+        background-color: $primary-darker;
         border:1px solid $primary-darker;
     }
 }
