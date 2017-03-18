@@ -2,12 +2,16 @@ import Button from "./components/button"
 import Toast from "./components/toast"
 import Input from "./components/forms/input"
 import Textarea from "./components/forms/textarea"
+import Radio from "./components/forms/radio"
+import Checkbox from "./components/forms/checkbox"
 
 const install = function (v) {
     v.component(Button.name, Button)
     v.component(Toast.name, Toast)
     v.component(Input.name, Input)
     v.component(Textarea.name, Textarea)
+    v.component(Radio.name, Radio)
+    v.component(Checkbox.name, Checkbox)
 }
 
 // auto install
@@ -21,4 +25,6 @@ module.exports = {
     Toast,
     Input,
     Textarea,
+    Radio,
+    Checkbox,
 }

@@ -1,13 +1,11 @@
 <template>
 <div :class="'m-input'">
         <label v-if="label!==null " for="text" :class="'m-label'">{{ label }}</label>
-        <input id="text" type="text" :class="'m-text'" :placeholder="placeholder" v-blur="onBlur" v-bind:value="value" v-on:input="updateValue($event.target.value)">
+        <input id="text" type="text" :class="'m-text'" :placeholder="placeholder" v-bind:value="value" v-on:input="updateValue($event.target.value)" @blur="onBlur">
         <p v-if="message!==null " :class="'m-message'">{{ message }}</p>
 </div>
 </template>
 <script>
-import blurDir from "./directives/blur"
-
 export default {
     name: "m-input",
     props: {
@@ -24,9 +22,6 @@ export default {
             type: String,
             default: null,
         },
-    },
-    directives: {
-        blur: blurDir,
     },
     methods: {
         onBlur() {
