@@ -4,10 +4,10 @@
         <a class="arrow-icon"><<</a>
         <a class="arrow-icon"><</a>
         <div class="m-calendar-ym">
-            <a>{{ year }}</a> 
-            <a>年</a> 
-            <a>{{ month }}</a>
-            <a>月</a>
+            <a class="m-calendar-tag">{{ year }}</a> 
+            <a class="m-calendar-tag">年</a> 
+            <a class="m-calendar-tag">{{ month }}</a>
+            <a class="m-calendar-tag">月</a>
         </div>
         <a class="arrow-icon">>></a>
         <a class="arrow-icon">></a>
@@ -35,19 +35,26 @@ export default {
 .m-calendar{
     width:200px;
     height: 300px;
+    padding: 8px;
     .m-calendar-bar{
         width:100%;
-        height: 30px;
         .arrow-icon{
+            display: inline-block;
             line-height: 30px;
             vertical-align: middle;
         }
         .m-calendar-ym{
             display: inline-block;
-            font-size: 0;
             width :60%;
-            height: 100%;
+            font-size: 0;
             vertical-align: middle;
+            .m-calendar-tag{
+                display: inline-block;
+                font-size: 14px;
+                text-align: center;
+                line-height: 30px;
+                width:25%;
+            }
         }
     }
 }
