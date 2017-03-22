@@ -1,7 +1,7 @@
 <template>
 <div :class="'m-input'">
         <label v-if="label!==null " for="text" :class="'m-label'">{{ label }}</label>
-        <input id="text" type="text" :class="'m-text'" :placeholder="placeholder" v-bind:value="value" v-on:input="updateValue($event.target.value)" @blur="onBlur">
+        <input id="text" type="text" :class="'m-text'" :placeholder="placeholder" v-bind:value="value" v-on:input="updateValue($event.target.value)" @blur="onBlur" @focus="onFocus">
         <p v-if="message!==null " :class="'m-message'">{{ message }}</p>
 </div>
 </template>
@@ -26,6 +26,9 @@ export default {
     methods: {
         onBlur() {
             this.$emit("onBlur")
+        },
+        onFocus() {
+            this.$emit("onfocus")
         },
         updateValue(value) {
             this.$emit("input", value)

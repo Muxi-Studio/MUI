@@ -15,7 +15,10 @@
       @blur="focus = false"
       v-model="model">
       </span>
-      <span class="m-radio-text"><slot></slot></span>
+      <span class="m-radio-text">
+        <slot></slot>
+        <template v-if="!$slots.default">{{label}}</template>
+      </span>
 </label>
 </template>
 <script>
@@ -84,7 +87,8 @@ export default {
     }
     .is-checked{
         .m-radio-inner{
-           background-color: $primary-darker; 
+           background-color: $primary-darker;
+           border: 1px solid $primary-darker;
            &:after{
                 transform: translate(-50%,-50%) scale(1);
            }

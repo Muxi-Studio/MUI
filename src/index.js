@@ -4,6 +4,8 @@ import Input from "./components/forms/input"
 import Textarea from "./components/forms/textarea"
 import Radio from "./components/forms/radio"
 import Checkbox from "./components/forms/checkbox"
+import CheckboxGroup from "./components/forms/checkbox/group"
+import DatePicker from "./components/datepicker"
 
 const install = function (v) {
     v.component(Button.name, Button)
@@ -12,6 +14,8 @@ const install = function (v) {
     v.component(Textarea.name, Textarea)
     v.component(Radio.name, Radio)
     v.component(Checkbox.name, Checkbox)
+    v.component(CheckboxGroup.name, CheckboxGroup)
+    v.component(DatePicker.name, DatePicker)
 }
 
 // auto install
@@ -27,4 +31,5 @@ module.exports = {
     Textarea,
     Radio,
     Checkbox,
+    CheckboxGroup,
 }
