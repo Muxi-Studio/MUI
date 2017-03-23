@@ -1,7 +1,7 @@
 <template>
 <div>
     <m-input v-model="text" v-on:onfocus="onFocus"></m-input>
-    <m-calendar></m-calendar>
+    <m-calendar v-if="calendar"></m-calendar>
 </div>
 </template>
 <script>
@@ -21,11 +21,12 @@ export default {
     data() {
         return {
             text: "",
+            calendar: false,
         }
     },
     methods: {
         onFocus() {
-            console.log("haha")
+            this.calendar = true
         },
     },
 }

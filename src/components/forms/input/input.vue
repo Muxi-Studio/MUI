@@ -40,7 +40,7 @@ export default {
 @import '../../../scss/common/color.scss';
 @import '../../../scss/common/font.scss';
 .m-input{
-    width: 200px;
+    width: 230px;
 }
 .m-text{
     width: 100%;
