@@ -15,18 +15,28 @@
 	</div>
 </template>
 <script>
+import bus from "../../../emitter/bus"
+
 export default {
     props: {
-        year: [String, Number],
-        month: [String, Number],
+        pyear: [String, Number],
+        pmonth: [String, Number],
     },
     data() {
         return {
             date: [],
+            year: "",
+            month: "",
         }
     },
     created() {
+        this.year = this.pyear
+        this.month = this.pmonth
         this.getDayRange(this.year, this.month)
+    },
+    mounted() {
+        bus.$on("yearbtn", this.updateyear)
+        bus.$on("monthbtn", this.updatemonth)
     },
     methods: {
         getDayCount(year, month) {
@@ -39,6 +49,7 @@ export default {
             return dict[month]
         },
         getDayRange(year, month) {
+            this.date = []
             const date = new Date(year, month, 1)
             const firstDay = date.getDay()
             const dayCount = this.getDayCount(year, month)
@@ -67,6 +78,14 @@ export default {
             if (item.class === "active") {
                 this.$emit("daychange", item.text)
             }
+        },
+        updateyear(e) {
+            this.year = e
+            this.getDayRange(this.year, this.month)
+        },
+        updatemonth(e) {
+            this.month = e
+            this.getDayRange(this.year, this.month)
         },
     },
 }

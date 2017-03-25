@@ -1,19 +1,23 @@
 <template>
 <div class="m-calendar">
     <div class="m-calendar-bar">
-        <a class="arrow-icon"><<</a>
-        <a class="arrow-icon"><</a>
+        <a class="arrow-icon" @click="yearsub"><<</a>
+        <a class="arrow-icon" @click="monthsub">
+            <a v-show="monthshow"><</a>
+        </a>
         <div class="m-calendar-ym">
-            <a class="m-calendar-tag m-calendar-tag-year" @click="yearbtn">{{ year }}</a> 
+            <a class="m-calendar-tag m-calendar-tag-content m-calendar-tag-year" @click="yearbtn">{{ year }}</a> 
             <a class="m-calendar-tag">年</a> 
-            <a class="m-calendar-tag  m-calendar-tag-month" @click="monthbtn">{{ month + 1}}</a>
+            <a class="m-calendar-tag  m-calendar-tag-content" @click="monthbtn">{{ month + 1}}</a>
             <a class="m-calendar-tag">月</a>
         </div>
-        <a class="arrow-icon">>></a>
-        <a class="arrow-icon">></a>
+        <a class="arrow-icon" @click="monthadd" v-if="monthbtn">
+            <a v-show="monthshow">></a>
+        </a>
+        <a class="arrow-icon" @click="yearadd">>></a>
     </div>
-    <m-daypicker :year="year" :month="month" v-if="selectday" v-on:daychange="daychange"></m-daypicker>
-    <m-yearpicker :year="year" v-if="selectyear" v-on:yearchange="yearchange"></m-yearpicker>
+    <m-daypicker :pyear="year" :pmonth="month" v-if="selectday" v-on:daychange="daychange"></m-daypicker>
+    <m-yearpicker :pyear="year" v-if="selectyear" v-on:yearchange="yearchange"></m-yearpicker>
     <m-monthpicker :month="month" v-if="selectmonth" v-on:monthchange="monthchange"></m-monthpicker>
 </div>
 </template>
@@ -21,6 +25,7 @@
 import DayPicker from "./picker/daypicker.vue"
 import YearPicker from "./picker/yearpicker.vue"
 import MonthPicker from "./picker/monthpicker.vue"
+import bus from "../../emitter/bus"
 
 export default {
     name: "m-calendar",
@@ -53,10 +58,20 @@ export default {
         this.day = this.pday
         this.currDate = `${this.year}-${this.month}-${this.day}`
     },
-    Updated() {
-        console.log("hahaha")
+    updated() {
+        // console.log(this.selectday)
+        // if (this.selectday) {
+        //     this.monthshow = true
+        // } else {
+        //     this.monthshow = false
+        // }
         // this.currDate = `${this.year}-${this.month}-${this.day}`
         // this.$emit("getcurr", this.currDate)
+    },
+    computed: {
+        monthshow() {
+            return this.selectday
+        },
     },
     methods: {
         update() {
@@ -89,6 +104,40 @@ export default {
             this.selectday = true
             this.update()
         },
+        yearsub() {
+            if (!this.selectyear) {
+                this.year -= 1
+                bus.$emit("yearbtn", this.year)
+            } else {
+                this.year -= 10
+                bus.$emit("yearpage", this.year)
+            }
+        },
+        yearadd() {
+            if (!this.selectyear) {
+                this.year += 1
+                bus.$emit("yearbtn", this.year)
+            } else {
+                this.year += 10
+                bus.$emit("yearpage", this.year)
+            }
+        },
+        monthsub() {
+            this.month -= 1
+            if (this.month === -1) {
+                this.month = 11
+                this.year -= 1
+            }
+            bus.$emit("monthbtn", this.month)
+        },
+        monthadd() {
+            this.month += 1
+            if (this.month === 12) {
+                this.month = 0
+                this.year += 1
+            }
+            bus.$emit("monthbtn", this.month)
+        },
     },
 }
 </script>
@@ -115,6 +164,7 @@ $arrow-icon-width:16px;
             font-size: 12px;
             vertical-align: middle;
             text-align: center;
+            cursor: pointer;
         }
         .m-calendar-ym{
             display: inline-block;
@@ -130,14 +180,13 @@ $arrow-icon-width:16px;
                 text-align: center;
                 font-weight: bold;
             }
-            .m-calendar-tag-year{
+            .m-calendar-tag-content{
                 text-align: right;
-                width:32px;
                 color:$primary-darker;
+                cursor: pointer;
             }
-            .m-calendar-tag-month{
-                text-align: right;
-                color:$primary-darker;
+            .m-calendar-tag-year{
+                width:32px;
             }
         }
     }

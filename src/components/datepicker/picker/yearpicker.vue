@@ -6,31 +6,44 @@
 	</div>
 </template>
 <script>
+import bus from "../../../emitter/bus"
+
 export default {
     props: {
-        year: [String, Number],
+        pyear: [String, Number],
     },
     data() {
         return {
+            year: "",
             years: [],
         }
     },
     mounted() {
-        if (this.year % 2 === 0) {
-            for (let i = 6; i > -4;) {
-                this.years.push(this.year - i)
-                i -= 1
-            }
-        } else {
-            for (let i = 7; i > -3;) {
-                this.years.push(this.year - i)
-                i -= 1
-            }
-        }
+        this.year = this.pyear
+        this.countYear()
+        bus.$on("yearpage", this.turnpage)
     },
     methods: {
         chooseYear(year) {
             this.$emit("yearchange", year)
+        },
+        turnpage(e) {
+            this.year = e
+            this.countYear()
+        },
+        countYear() {
+            this.years = []
+            if (this.year % 2 === 0) {
+                for (let i = 6; i > -4;) {
+                    this.years.push(this.year - i)
+                    i -= 1
+                }
+            } else {
+                for (let i = 7; i > -3;) {
+                    this.years.push(this.year - i)
+                    i -= 1
+                }
+            }
         },
     },
 }
