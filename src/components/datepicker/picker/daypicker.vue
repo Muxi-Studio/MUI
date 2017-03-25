@@ -9,8 +9,8 @@
 			<a class="m-daypicker-item">五</a>
 			<a class="m-daypicker-item">六</a>
 		</div>
-		<div v-for="item in date" class="m-daypicker-item">
-			<a v-bind:class="item.class">{{item.text}}</a>
+		<div>
+			<a v-for="item in date" v-bind:class="item.class" class="m-daypicker-item" @click="chooseDay(item)">{{item.text}}</a>
 		</div>
 	</div>
 </template>
@@ -25,9 +25,8 @@ export default {
             date: [],
         }
     },
-    mounted() {
-        this.getDayRange(this.year, this.month)        
-        console.log(this.date)
+    created() {
+        this.getDayRange(this.year, this.month)
     },
     methods: {
         getDayCount(year, month) {
@@ -51,17 +50,22 @@ export default {
                     predate = 31
                 }
                 for (let i = firstDay - 1; i > -1;) {
-                    this.date.push({ text: predate - i, class: "active" } )
+                    this.date.push({ text: predate - i, class: "inactive" })
                     i -= 1
                 }
             }
             for (let i = 1; i <= dayCount;) {
+                this.date.push({ text: i, class: "active" })
+                i += 1
+            }
+            for (let i = 1; i <= 42 - dayCount - firstDay;) {
                 this.date.push({ text: i, class: "inactive" })
                 i += 1
             }
-            for (let i = 1; i <= 35 - dayCount - firstDay;) {
-                this.date.push({ text: i, class: "inactive" })
-                i += 1
+        },
+        chooseDay(item) {
+            if (item.class === "active") {
+                this.$emit("daychange", item.text)
             }
         },
     },
@@ -80,10 +84,22 @@ export default {
 	.m-daypicker-item{
 		font-size: 14px;
 		display: inline-block;
-		width: 30px;
-		height: 30px;
+		width: 26px;
+		height: 26px;
 		text-align: center;
-		line-height: 30px;
+		line-height: 26px;
+		border-radius: 2px;
+	}
+	.active{
+		color: $text-darker;
+		&:hover{
+			background-color: $primary-darker;
+			color: #fff;
+            cursor: pointer;
+		}
+	}
+	.inactive{
+		color: $secondary-color;
 	}
 }
 </style>
