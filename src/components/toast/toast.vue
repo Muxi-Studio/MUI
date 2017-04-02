@@ -1,7 +1,8 @@
 <template>
     <transition name="fade">
-        <div :class="'m-toast ' + 'm-toast--' + this.type">
-            {{ content }}
+        <div :class="'m-toast ' + 'm-toast--' + this.type" @click="close">
+            {{content}}
+            <slot></slot>
         </div>
     </transition>
 </template>
@@ -22,23 +23,29 @@ export default {
             default: () => {},
         },
     },
+    methods: {
+        close() {
+            this.$emit("close")
+        },
+    },
 }
 </script>
 <style lang="scss">
 @import '../../scss/common/color.scss';
 @import '../../scss/common/font.scss';
 .m-toast {
-    position:fixed;
+    position: fixed;
     left: 50%;
-    top:20px;
-    transform:translateX(-50%);
-    height:50px;
-    padding-left:128px;
-    padding-right:128px;
+    top: 20px;
+    transform: translateX(-50%);
+    height: 50px;
+    line-height: 50px;
+    padding-left: 128px;
+    padding-right: 128px;
     border-radius: 3px;
     z-index: 1;
     overflow: hidden;
-    &:before{
+    &:before {
         background-color: #fff;
         content: "";
         width: 100%;
@@ -52,15 +59,19 @@ export default {
         border-radius: 3px;
         transform: translateY(-3px);
     }
-    &--primary{
+    &--primary {
         background-color: $primary-darker;
-        border:1px solid $primary-darker;
+        border: 1px solid $primary-darker;
     }
 }
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .5s
 }
-.fade-enter, .fade-leave-to{
-  opacity: 0
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0
 }
 </style>
