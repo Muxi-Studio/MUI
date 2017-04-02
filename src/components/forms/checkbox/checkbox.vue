@@ -9,9 +9,7 @@
       <input
         class="m-checkbox-original"
         type="checkbox"
-        v-model="model"
-        @focus="focus = true"
-        @blur="focus = false">
+        v-model="model">
     </span>
     <span class="m-checkbox-label" v-if="$slots.default || label">
       <slot></slot>
@@ -35,13 +33,19 @@ export default {
     computed: {
         model: {
             get() {
-                return this.store 
+                return this.value 
             },
             set(val) {
                 this.$emit("input", val)
             },
         },
     },
+    // methods: {
+    //     changeState() {
+    //         this.model = !this.model
+    //         console.log("ha")
+    //     },
+    // },
 }
 </script>
 <style lang="scss">
