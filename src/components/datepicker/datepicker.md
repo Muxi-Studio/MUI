@@ -3,7 +3,7 @@
 ### Usage Example
 
 ```
-<m-datepicker></m-datepicker>
+<m-datepicker v-model="date"></m-datepicker>
 ```
  
 
@@ -11,3 +11,4 @@
 
 | Attribute      |Description  |Type  |Accepted values|Default|
 | ------------- |:-------------:| -----:|-----:|-----:|
+| v-model| v-model of datepicker| string|/|/|

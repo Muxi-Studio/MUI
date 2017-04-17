@@ -1,7 +1,7 @@
 <template>
 <div>
-    <m-input v-model="text" v-on:onfocus="onFocus"></m-input>
-    <m-calendar v-if="calendar" v-on:getcurr="getcurr" :pyear="year" :pmonth="month" :pday="day"></m-calendar>
+    <m-input v-model="model" v-on:onfocus="onFocus"></m-input>
+    <m-calendar v-if="calendar" v-on:getcurr="getcurr" :pyear="year" :pmonth="month" :pday="day" ></m-calendar>
 </div>
 </template>
 <script>
@@ -12,7 +12,6 @@ export default {
     name: "m-datepicker",
     props: {
         value: String,
-        label: String,
     },
     components: {
         Mdatepicker,
@@ -20,11 +19,11 @@ export default {
     },
     data() {
         return {
-            text: "",
             calendar: false,
             year: "",
             month: "",
             day: "",
+            currDate: "",
         }
     },
     methods: {
@@ -32,15 +31,32 @@ export default {
             this.calendar = true
         },
         getcurr(e) {
-            this.text = e
+            this.model = e
+        },
+        getdate() {
+            this.year = this.currDate.getFullYear()
+            this.month = this.currDate.getMonth()
+            this.day = this.currDate.getDate()
+            this.model = `${this.year}-${this.month + 1}-${this.day}`
         },
     },
-    created() {
-        const currDate = new Date()
-        this.year = currDate.getFullYear()
-        this.month = currDate.getMonth()
-        this.day = currDate.getDate()
-        this.text = `${this.year}-${this.month + 1}-${this.day}`
+    computed: {
+        model: {
+            get() {
+                return this.value
+            },
+            set(val) {
+                this.$emit("input", val)
+            },
+        },
+    },
+    mounted() {
+        if (this.value) {
+            this.currDate = new Date(Date.parse(this.value))
+        } else {
+            this.currDate = new Date()
+        }
+        this.getdate()
     },
 }
 </script>

@@ -16,7 +16,7 @@ export default {
         },
         placeholder: {
             type: String,
-            default: "请输入",
+            default: null,
         },
         label: {
             type: String,
@@ -25,7 +25,7 @@ export default {
     },
     methods: {
         onBlur() {
-            this.$emit("onBlur")
+            this.$emit("onblur")
         },
         onFocus() {
             this.$emit("onfocus")

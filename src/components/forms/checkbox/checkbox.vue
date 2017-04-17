@@ -23,20 +23,23 @@ export default {
     props: {
         value: {},
         label: {},
+        checkarr: {},
     },
     data() {
         return {
-            selfModel: false,
             focus: false,
         }
+    },
+    mounted() {
+        console.log(this.checkarr)
     },
     computed: {
         model: {
             get() {
-                return this.value 
+                return this.value
             },
             set(val) {
-                this.$emit("input", val)
+                this.$parent.$emit("input", val)
             },
         },
     },
