@@ -6,6 +6,9 @@ import Radio from "./components/forms/radio"
 import Checkbox from "./components/forms/checkbox"
 import CheckboxGroup from "./components/forms/checkbox/group"
 import DatePicker from "./components/datepicker"
+import Menu from "./components/menu/menu"
+import Menuitem from "./components/menu/menuitem"
+import SubMenu from "./components/menu/submenu"
 
 const install = function (v) {
     v.component(Button.name, Button)
@@ -16,6 +19,9 @@ const install = function (v) {
     v.component(Checkbox.name, Checkbox)
     v.component(CheckboxGroup.name, CheckboxGroup)
     v.component(DatePicker.name, DatePicker)
+    v.component(Menu.name, Menu)
+    v.component(Menuitem.name, Menuitem)
+    v.component(SubMenu.name, SubMenu)
 }
 
 // auto install
@@ -32,4 +38,8 @@ module.exports = {
     Radio,
     Checkbox,
     CheckboxGroup,
+    DatePicker,
+    Menu,
+    Menuitem,
+    SubMenu,
 }

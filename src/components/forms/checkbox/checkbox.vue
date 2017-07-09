@@ -1,15 +1,17 @@
 <template>
   <label class="m-checkbox">
-    <span class="m-checkbox-input"
+<!--     <span class="m-checkbox-input"
       :class="{
         'is-focus': focus
       }"
-    >
+    > -->
       <span class="m-checkbox-inner"></span>
       <input
         class="m-checkbox-original"
         type="checkbox"
-        v-model="model">
+        :id="label"
+        :value="label"
+        v-model="focus">
     </span>
     <span class="m-checkbox-label" v-if="$slots.default || label">
       <slot></slot>
@@ -20,35 +22,38 @@
 <script>
 export default {
     name: "m-checkbox",
-    props: {
-        value: {},
-        label: {},
-        checkarr: {},
-    },
+    props: ["label"],
     data() {
         return {
             focus: false,
+            state: {},
+            checkarr: [],
         }
     },
     mounted() {
-        console.log(this.checkarr)
+        this.checkarr = this.$parent.checkarr
+        var flabel = this.checkarr.find((e) => {
+            return e == this.label
+        })
+        if (flabel) {
+            this.focus = true
+            console.log(this.focus)
+        }
     },
     computed: {
-        model: {
+        focus: {
             get() {
                 return this.value
             },
             set(val) {
-                this.$parent.$emit("input", val)
+                this.$emit("input", val)
+                this.state[this.label] = val
+                this.$parent.modify(this.state)
+                return !this.focus
             },
         },
     },
-    // methods: {
-    //     changeState() {
-    //         this.model = !this.model
-    //         console.log("ha")
-    //     },
-    // },
+
 }
 </script>
 <style lang="scss">
