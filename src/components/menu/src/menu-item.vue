@@ -5,6 +5,8 @@
 	</li>
 </template>
 <script>
+import { bus } from "../../../emitter/bus"
+
 export default {
     name: "m-menu-item",
     props: ["label"],
@@ -13,21 +15,19 @@ export default {
             focus: false,
         }
     },
+    created() {
+        bus.$emit("addTag", this.label)
+        bus.$on("update", this.updateFocus)
+    },
     methods: {
         selectMenu() {
-            this.focus = !this.focus
+            this.focus = true
+            this.$parent.modify(this.label)
         },
-    },
-    computed: {
-        focus: {
-            get() {
-                return this.focus
-            },
-            set(val) {
-                this.state[this.label] = val
-                this.$parent.modify(this.state)
-                return !this.focus
-            },
+        updateFocus(e) {
+            if (this.label !== e){
+                this.focus = false
+            }
         },
     },
 }
@@ -36,11 +36,13 @@ export default {
 @import '../../../scss/common/font.scss';
 @import '../../../scss/common/color.scss';
 .m-menu-item{
-	list-style:none;
-	padding: 20px 100px 20px 30px;
-	font-size: $fontsize-button;
-	color:$secondary-color;
-	position: relative;
+    list-style:none;
+    padding: 20px 100px 20px 30px;
+    font-size: $fontsize-button;
+    color:$secondary-color;
+    position: relative;
+}
+.m-menu>.m-menu-item{
 	&:hover{
 		background-color: $text-darkest;
 		cursor: pointer;

@@ -4,17 +4,27 @@
   </ul>
 </template>
 <script>
+import { bus } from "../../../emitter/bus"
+
 export default {
     name: "m-menu",
-    mounted() {
-        this.state = new Array(this.$children.length)
-        this.state.fill(false)
-        console.log(this.state)
+    created() {
+        bus.$on("addTag", this.add)
     },
     data() {
         return {
-            state: [],
+            state: {},
         }
+    },
+    methods: {
+        add(e) {
+            this.state[e] = false
+        },
+        modify(label) {
+            Object.keys(this.state).forEach((e) => this.state[e] = false)   
+            this.state[label] = true
+            bus.$emit("update", label)
+        },
     },
 }
 </script>
@@ -24,5 +34,6 @@ export default {
 	padding: 0;
 	background-color: $text-darker;
 	display: inline-block;
+    position: relative;
 }
 </style>
