@@ -1,10 +1,10 @@
 <template>
-	<li class="m-menu-item" @click="selectMenu" @mouseover="active = true" @mouseleave="active = false" :class="{ active: focus }" v-if="$slots.default || label">
+	<li class="m-menu-item" @click="selectMenu" v-hover-open="selectMenu" v-hover-close="hoverCloseMethod"  :class="{ active: active }" v-if="$slots.default || label">
 		<slot name="title"></slot>
 		<template v-if="!$slots.title"><a>{{label}}</a></template>
 		<span class="arrow">></span>
-		<template v-if="active">
-			<div class="submenu" @mouseover="active = true">
+		<template>
+			<div class="submenu" v-show="active">
 				<slot></slot>
 			</div>
 		</template>
@@ -13,32 +13,60 @@
 <script>
 import { bus } from "../../../emitter/bus"
 
+import hoverOpen from "./directives/hover-open"
+import hoverClose from "./directives/hover-close"
+
 export default {
     name: "m-submenu",
-    props: ["label"],
+    props: ["label", "index"],
     data() {
         return {
-            focus: false,
             active: false,
+            trigger: false,
         }
     },
+    directives: {
+        HoverOpen: hoverOpen,
+        HoverClose: hoverClose,
+    },
     created() {
-        bus.$emit("addTag", this.label)
+        this.trigger = !(this.rootMenu.trigger === "click")
+        // bus.$emit("addTag", this.index)
         bus.$on("update", this.updateFocus)
-        console.log(this.$slots)
+        bus.$on("updateArray", this.updateFocusArray)
     },
     methods: {
-        selectMenu() {
-            this.focus = true
-            this.$parent.modify(this.label)
+        selectMenu(e) {
+            e.stopPropagation()
+            this.active = true
+            this.rootMenu.modify(this.index)          
         },
         updateFocus(e) {
-            if (this.label !== e){
-                this.focus = false
+            if (this.index !== e) {
+                this.active = false
             }
         },
-        mouseOver() {
-            console.log("haha")
+        hoverOpenMethod() {
+            this.active = true
+        },
+        hoverCloseMethod() {
+            this.active = false
+        },
+        updateFocusArray(e) {
+            if (e.indexOf(this.index) !== -1) {
+                this.active = true
+            } else {
+                this.active = false
+            }
+        },
+    },
+    computed: {
+        rootMenu() {
+            var parent = this.$parent
+            while (parent.$options.name !== "m-menu") {
+                parent = parent.$parent
+            }
+            return parent
         },
     },
 }
