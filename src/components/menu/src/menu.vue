@@ -11,7 +11,12 @@ var store = []
 
 export default {
     name: "m-menu",
-    props: ["trigger"],
+    props: {
+        trigger: {
+            type: String,
+            default: "hover",
+        },
+    },
     created() {
         // bus.$on("addTag", this.add)
     },

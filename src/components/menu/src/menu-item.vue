@@ -1,5 +1,5 @@
 <template>
-	<li class="m-menu-item" @click="selectMenu" v-hover-open="selectMenu" v-hover-close="hoverCloseMethod" :class="{ active: active }" v-if="$slots.default || label">
+	<li class="m-menu-item" @click="selectMenu" v-hover-open="hoverOpenMethod" v-hover-close="hoverCloseMethod" :class="{ active: active }" v-if="$slots.default || label">
 		<slot></slot>
 		<template v-if="!$slots.default">{{label}}</template>
 	</li>
@@ -33,6 +33,7 @@ export default {
             e.stopPropagation()
             this.active = true
             this.rootMenu.modify(this.index)
+            this.$emit("select", this.index)
         },
         updateFocus(e) {
             if (this.index !== e) {
@@ -48,6 +49,7 @@ export default {
         },
         hoverOpenMethod() {
             this.active = true
+            this.rootMenu.modify(this.index)
         },
         hoverCloseMethod() {
             this.active = false
