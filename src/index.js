@@ -9,7 +9,7 @@ import DatePicker from "./components/datepicker"
 import Menu from "./components/menu/menu"
 import Menuitem from "./components/menu/menuitem"
 import SubMenu from "./components/menu/submenu"
-import Table from "./components/table/table"
+import TableGroup from "./components/table/table"
 import Tablecol from "./components/table/table-col"
 
 const install = function (v) {
@@ -24,8 +24,8 @@ const install = function (v) {
     v.component(Menu.name, Menu)
     v.component(Menuitem.name, Menuitem)
     v.component(SubMenu.name, SubMenu)
-    v.component(Table.name, Table)
     v.component(Tablecol.name, Tablecol)
+    v.component(TableGroup.name, TableGroup)
 }
 
 // auto install
@@ -46,5 +46,5 @@ module.exports = {
     Menu,
     Menuitem,
     SubMenu,
-    Table,
+    TableGroup,
 }

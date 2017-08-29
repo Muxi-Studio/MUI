@@ -1,36 +1,43 @@
 <template>
-    <div class="m-table">
-    	<div class="m-table-head">
-        	<slot></slot>
-        </div>
-        <div v-for="item in data" class="m-table-row">
-        	<div v-for="info in tableinfo" class="m-table-item" v-bind:style="{ width: info.width + 'px'}">{{item[info.order]}}</div>
-        </div>
-    </div>
+<div class="m-table-wrapper">
+    <table class="m-table">
+        <thead>
+        <tr>
+        </tr>
+        </thead>
+        <tbody>
+<!--         <table-row
+                v-for="row in displayedRows"
+                :key="row.vueTableComponentInternalRowId"
+                :row="row"
+                :columns="columns"
+        ></table-row> -->
+        </tbody>
+    </table>
+</div>
 </template>
 <script>
-import { bus } from "../../emitter/bus"
+// import { bus } from "../../emitter/bus"
+import TableHeader from "./table-header.vue"
 
 export default {
     name: "m-table",
     props: ["data"],
     data() {
         return {
-    	    tableinfo: [],
+    	    columns: [],
+            rows: [],
         }
     },
     created() {
-        bus.$on("sloton", this.Addlist)
     },
     mounted() {
-        this.$children.forEach((e) => {
-            this.tableinfo.push({ width: e.width, order: e.prop })
-        })
+    },
+    components: {
+        TableHeader,
     },
     methods: {
-        Addlist(e) {
-            console.log(e)
-        },
+
     },
 }
 </script>
