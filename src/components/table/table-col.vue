@@ -1,3 +1,7 @@
+<template>
+    <td>hah</td>
+</template>
+
 <script>
 import { bus } from "../../emitter/bus"
 
@@ -7,9 +11,6 @@ export default {
     mounted() {
         console.log(this.$parent.data[0])
     },
-    render(createElement){
-        return createElement('td', this.prop)
-    }
 }
 </script>
 <style lang="scss">

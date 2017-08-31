@@ -3,6 +3,7 @@
     <table class="m-table">
         <thead>
         <tr>
+            <m-table-col></m-table-col>
         </tr>
         </thead>
         <tbody>
@@ -19,6 +20,7 @@
 <script>
 // import { bus } from "../../emitter/bus"
 import TableHeader from "./table-header.vue"
+import TableCol from "./table-col.vue"
 
 export default {
     name: "m-table",
@@ -35,6 +37,7 @@ export default {
     },
     components: {
         TableHeader,
+        "m-table-col":TableCol
     },
     methods: {
 
