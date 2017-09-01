@@ -2,23 +2,14 @@
 <div class="m-table-wrapper">
     <table class="m-table">
         <thead>
-        <tr>
-            <m-table-col></m-table-col>
-        </tr>
+            <slot></slot>
         </thead>
-        <tbody>
-<!--         <table-row
-                v-for="row in displayedRows"
-                :key="row.vueTableComponentInternalRowId"
-                :row="row"
-                :columns="columns"
-        ></table-row> -->
-        </tbody>
+        <tbody></tbody>
     </table>
 </div>
 </template>
 <script>
-// import { bus } from "../../emitter/bus"
+import { bus } from "../../emitter/bus"
 import TableHeader from "./table-header.vue"
 import TableCol from "./table-col.vue"
 
@@ -32,15 +23,18 @@ export default {
         }
     },
     created() {
+        bus.$on("initCol",this.addCol)
     },
     mounted() {
     },
     components: {
-        TableHeader,
+        "m-table-header":TableHeader,
         "m-table-col":TableCol
     },
     methods: {
-
+        addCol(e){
+            this.columns.push(e)
+        }
     },
 }
 </script>

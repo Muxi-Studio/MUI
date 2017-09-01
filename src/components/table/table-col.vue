@@ -1,6 +1,7 @@
 <template>
-    <td>hah</td>
+    <td>{{label}}</td>
 </template>
+
 
 <script>
 import { bus } from "../../emitter/bus"
@@ -9,7 +10,12 @@ export default {
     name: "m-table-col",
     props: ["width", "prop", "label"],
     mounted() {
-        console.log(this.$parent.data[0])
+        var conf = {
+            width:this.width,
+            prop:this.prop,
+            label:this.label
+        }
+        bus.$emit("initCol",conf)
     },
 }
 </script>
