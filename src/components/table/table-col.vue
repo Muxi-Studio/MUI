@@ -1,31 +1,29 @@
-<template>
-    <td>{{label}}</td>
-</template>
-
-
 <script>
 import { bus } from "../../emitter/bus"
-
 export default {
     name: "m-table-col",
     props: ["width", "prop", "label"],
     mounted() {
         var conf = {
-            width:this.width,
-            prop:this.prop,
-            label:this.label
+            width: this.width,
+            prop: this.prop,
+            label: this.label,
+            content: null
         }
-        bus.$emit("initCol",conf)
+        // console.log(this.$slots.default)
+        if(this.$slots.default !== undefined){
+            conf.content = this.$slots.default[0]
+        }
+        bus.$emit("initCol", conf)
     },
+    render() {
+    //     try {
+    //         return this.$slots.default[0];
+    //     } catch (e) {
+    //         throw new Error('IntersectionObserver.vue can only render one, and exactly one child component.');
+    //     }
+
+        return null;
+    }
 }
 </script>
-<style lang="scss">
-@import '../../scss/common/color.scss';
-@import '../../scss/common/font.scss';
-.m-table-head-item{
-	display: inline-block;
-	font-size: 16px;
-	text-align: left;
-	text-indent: 8px;
-}
-</style>

@@ -1,16 +1,15 @@
 <template>
 <div class="m-table-wrapper">
+    <slot></slot>
     <table class="m-table">
-        <thead>
-            <slot></slot>
-        </thead>
-        <tbody></tbody>
+        <thead></thead>
+        <m-table-body :columns="columns" :data="data"></m-table-body>
     </table>
 </div>
 </template>
 <script>
 import { bus } from "../../emitter/bus"
-import TableHeader from "./table-header.vue"
+import TableBody from "./table-body.vue"
 import TableCol from "./table-col.vue"
 
 export default {
@@ -28,7 +27,7 @@ export default {
     mounted() {
     },
     components: {
-        "m-table-header":TableHeader,
+        "m-table-body":TableBody,
         "m-table-col":TableCol
     },
     methods: {

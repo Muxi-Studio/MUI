@@ -1,22 +1,26 @@
 <template>
 <div>
-    <th>haha</th>
+    {{content.tag}}
 </div>
 </template>
 <script>
-
 export default {
-    name: "m-table-body",
-    props: [],
+    name: "m-table-content",
+    props: ['content'],
     data() {
         return {}
     },
     mounted() {
+        console.log(this.content)
+
     },
     methods: {
 
     },
     components: {
     },
+    computed:{
+
+    }
 }
 </script>
