@@ -1,9 +1,6 @@
-<template>
-<div>
-    {{content.tag}}
-</div>
-</template>
 <script>
+import deepClone from '../../util/deepClone.js'
+import Button from '../button/index'
 export default {
     name: "m-table-content",
     props: ['content'],
@@ -12,15 +9,11 @@ export default {
     },
     mounted() {
         console.log(this.content)
-
     },
-    methods: {
-
-    },
-    components: {
-    },
-    computed:{
-
+    render(createElement) {
+        return createElement('div', [
+            ...deepClone(this.content, createElement)
+        ])
     }
 }
 </script>
