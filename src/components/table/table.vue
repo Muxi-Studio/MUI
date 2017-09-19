@@ -3,7 +3,7 @@
     <slot></slot>
     <table class="m-table">
         <thead></thead>
-        <m-table-body :columns="columns" :data="data"></m-table-body>
+        <m-table-body :data="data" :columns="columns"></m-table-body>
     </table>
 </div>
 </template>
@@ -17,8 +17,7 @@ export default {
     props: ["data"],
     data() {
         return {
-    	    columns: [],
-            rows: [],
+            columns: []
         }
     },
     created() {

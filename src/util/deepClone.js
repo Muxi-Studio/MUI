@@ -1,4 +1,4 @@
-function deepClone(vnodes, createElement) {
+function deepClone(vnode, createElement) {
     function cloneVNode(vnode) {
         const clonedChildren = vnode.children && vnode.children.map(vnode => cloneVNode(vnode));
         const cloned = createElement(vnode.tag, vnode.data, clonedChildren);
@@ -12,8 +12,7 @@ function deepClone(vnodes, createElement) {
         cloned.key = vnode.key;
         return cloned;
     }
-    const clonedVNodes = vnodes.map(vnode => cloneVNode(vnode))
-    return clonedVNodes;
+    return cloneVNode(vnode);
 }
 
 module.exports = deepClone;

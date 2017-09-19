@@ -20,11 +20,8 @@
   },
   "homepage": "https://github.com/Muxi-Studio/MUI_FE#readme",
   "dependencies": {
-    "vue": "^2.1.8",
-    "vue-html-loader": "^1.2.4",
-    "vue-loader": "^13.0.4",
-    "vue-style-loader": "^3.0.1",
-    "vue-template-compiler": "^2.4.2"
+    "vue": "^2.4.4",
+    "vue-html-loader": "^1.2.4"
   },
   "devDependencies": {
     "babel-core": "^6.14.0",
@@ -42,6 +39,9 @@
     "style-loader": "^0.13.1",
     "vue-hot-reload-api": "^1.3.3",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.1"
+    "webpack-dev-server": "^2.4.1",
+    "vue-loader": "^13.0.5",
+    "vue-style-loader": "^3.0.1",
+    "vue-template-compiler": "^2.4.2"
   }
 }
