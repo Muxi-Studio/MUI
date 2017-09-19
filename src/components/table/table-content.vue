@@ -1,8 +1,3 @@
-<template>
-<div>
-    <slot></slot>
-</div>
-</template>
 <script>
 import deepClone from '../../util/deepClone.js'
 import Button from '../button/index'
