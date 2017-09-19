@@ -3,7 +3,7 @@
     <tr v-for = "item in data">
         <td v-for="col in columns">
             <template v-if="item[col.prop]">{{item[col.prop]}}</template>
-            <m-table-content v-else :content="col.content"></m-table-content>       
+            <m-table-content v-else>{{col.content}}</m-table-content>       
         </td>
     </tr>
 </tbody>

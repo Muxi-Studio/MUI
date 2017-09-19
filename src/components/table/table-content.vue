@@ -1,3 +1,8 @@
+<template>
+<div>
+    <slot></slot>
+</div>
+</template>
 <script>
 import deepClone from '../../util/deepClone.js'
 import Button from '../button/index'
@@ -10,10 +15,10 @@ export default {
     mounted() {
         console.log(this.content)
     },
-    render(createElement) {
-        return createElement('div', [
-            ...deepClone(this.content, createElement)
-        ])
-    }
+    // render(createElement) {
+    //     return createElement('div', [
+    //         ...deepClone(this.content, createElement)
+    //     ])
+    // }
 }
 </script>
