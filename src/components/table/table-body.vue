@@ -24,3 +24,15 @@ export default {
     }
 }
 </script>
+<style lang="scss">
+@import '../../scss/common/color.scss';
+td{
+    box-sizing: border-box;
+    text-align: center;
+    border-bottom: 1px solid $secondary-color;
+    padding: 5px;
+}
+</style>
+
+
+

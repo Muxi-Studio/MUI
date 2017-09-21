@@ -13,6 +13,7 @@ export default {
         
         if(this.$scopedSlots.default !== undefined){
             conf.content = this.$scopedSlots.default
+            console.log(conf.content)
         }
         bus.$emit("initCol", conf)
     },
