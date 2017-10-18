@@ -1,5 +1,5 @@
 <script>
-import deepClone from '../../util/deepClone.js'
+// import deepClone from '../../util/deepClone.js'
 import Button from '../button/index'
 export default {
     name: "m-table-content",

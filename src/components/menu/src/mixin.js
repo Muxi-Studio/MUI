@@ -27,7 +27,7 @@ module.exports = {
     },
     computed: {
         rootMenu() {
-            var parent = this.$parent
+            let parent = this.$parent
             while (parent.$options.name !== "m-menu") {
                 parent = parent.$parent
             }

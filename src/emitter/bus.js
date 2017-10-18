@@ -1,4 +1,5 @@
 import Vue from "vue"
 
-export var bus = new Vue()
+const bus = new Vue()
 
+export default bus
