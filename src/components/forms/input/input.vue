@@ -47,7 +47,7 @@ export default {
     height: 40px;
     padding: 0px 10px;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: $fontsize-button;
     box-sizing:border-box;
     border: 1px solid $secondary-color;
     color:$text-darker;
@@ -59,6 +59,9 @@ export default {
             color:$primary-darker;
         }
     }
+    &::placeholder{
+        color:$secondary-color;
+    }
 }
 .m-label{
     display: block;
@@ -66,10 +69,12 @@ export default {
     width: 100%;
     height: 30px;
     text-indent: 2px;
+    font-size: $fontsize-button;
 }
 .m-message{
     margin:2px 0px 0px 0px;
     text-indent: 2px;
     color:$secondary-color;
+    font-size: $fontsize-content;
 }
 </style>

@@ -1,5 +1,4 @@
 <script>
-import { bus } from "../../emitter/bus"
 export default {
     name: "m-table-col",
     props: ["width", "prop", "label"],
@@ -15,7 +14,7 @@ export default {
             conf.content = this.$scopedSlots.default
             console.log(conf.content)
         }
-        bus.$emit("initCol", conf)
+        this.$parent.$emit("initCol", conf)
     },
     render() {
         return null;

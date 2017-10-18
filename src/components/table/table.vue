@@ -21,7 +21,7 @@ export default {
         }
     },
     created() {
-        bus.$on("initCol",this.addCol)
+        this.$on("initCol",this.addCol)
     },
     mounted() {
     },

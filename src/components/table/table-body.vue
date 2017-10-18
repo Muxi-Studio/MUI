@@ -26,11 +26,14 @@ export default {
 </script>
 <style lang="scss">
 @import '../../scss/common/color.scss';
+@import '../../scss/common/font.scss';
 td{
     box-sizing: border-box;
     text-align: center;
     border-bottom: 1px solid $secondary-color;
     padding: 5px;
+    color: $text;
+    font-size: $fontsize-button;
 }
 </style>
 

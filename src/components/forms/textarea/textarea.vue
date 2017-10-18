@@ -45,6 +45,9 @@ export default {
             color:$primary-darker;
         }
     }
+    &::placeholder{
+        color:$secondary-color;
+    }
 }
 .m-message{
     margin:2px 0px 0px 0px;
