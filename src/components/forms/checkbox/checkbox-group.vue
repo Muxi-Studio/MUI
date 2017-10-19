@@ -4,13 +4,13 @@
   </div>
 </template>
 <script>
+var index = -1;
 export default {
     name: "m-checkbox-group",
     props: ["value"],
     data() {
         return {
             checkarr: [],
-            storeObj: {},
         }
     },
     created() {
@@ -18,11 +18,11 @@ export default {
     },
     methods: {
         modify(val) {
-            const valKey = Object.keys(val)[0]
-            this.storeObj[valKey] = val[valKey]
-            if (this.storeObj) {
-                this.checkarr = Object.keys(this.storeObj).filter(
-                    (e) => this.storeObj[e])
+            index = this.checkarr.indexOf(val)
+            if(index == -1){
+                this.checkarr.push(val)
+            }else{
+                this.checkarr.splice(index,1)
             }
             this.$emit("input", this.checkarr)
         },
