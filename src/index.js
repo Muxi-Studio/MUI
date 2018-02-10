@@ -11,6 +11,8 @@ import Menuitem from "./components/menu/menuitem"
 import SubMenu from "./components/menu/submenu"
 import TableGroup from "./components/table/table"
 import Tablecol from "./components/table/table-col"
+import Select from "./components/forms/select"
+import SelectOpt from "./components/forms/select/select-opt"
 import Col from "./components/grid/col"
 import Row from "./components/grid/row"
 
@@ -28,6 +30,8 @@ const install = function (v) {
     v.component(SubMenu.name, SubMenu)
     v.component(Tablecol.name, Tablecol)
     v.component(TableGroup.name, TableGroup)
+    v.component(Select.name, Select)
+    v.component(SelectOpt.name, SelectOpt)
     v.component(Col.name, Col)
     v.component(Row.name, Row)
 }
@@ -51,6 +55,8 @@ module.exports = {
     Menuitem,
     SubMenu,
     TableGroup,
+    Select,
+    SelectOpt,
     Col,
     Row,
 }
