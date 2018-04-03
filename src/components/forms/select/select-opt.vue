@@ -1,5 +1,5 @@
 <template>
-    <option :label="label">{{value}}</option>
+    <option :label="label" class="m-option">{{value}}</option>
 </template>
 <script>
 export default {
@@ -7,12 +7,15 @@ export default {
     props: {
         value: String,
         label:String,
-    }
+    },
 }
 </script>
 <style lang="scss">
 @import '../../../scss/common/color.scss';
 @import '../../../scss/common/font.scss';
-
+.m-option{
+    display: block;
+    color:red;
+}
 </style>
 
