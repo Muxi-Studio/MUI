@@ -1,5 +1,5 @@
 var webpack = require('webpack')
-var config = require("../../webpack.test.config.js")
+var webpackConf = require("../../webpack.test.config.js")
 
 module.exports = function(config) {
     config.set({
@@ -21,21 +21,7 @@ module.exports = function(config) {
         browsers: ['Chrome'],
         singleRun: false,
         concurrency: Infinity,
-        webpack: config,
-        webpackMiddleware: {
-            stats: "errors-only"
-        },
-        coverageReporter: {
-            dir: './coverage',
-            reporters: [{
-                    type: 'lcov',
-                    subdir: '.'
-                },
-                {
-                    type: 'text-summary'
-                }
-            ]
-        },
+        webpack: webpackConf,
         client: {
             mocha: {
                 timeout: 4000

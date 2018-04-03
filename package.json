@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "dev": "node_modules/.bin/webpack-dev-server",
-    "test": "npm run lint && npm run build && cross-env CI_ENV=/dev/ karma start test/unit/karma.conf.js --single-run",
+    "test": "npm run lint && npm run build && karma start test/unit/karma.conf.js --single-run",
     "lint": "node_modules/.bin/eslint src --quiet"
   },
   "repository": {

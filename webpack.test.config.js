@@ -34,5 +34,25 @@ module.exports = {
             loader: 'html-loader'
         }]
     },
+    plugins: [
+        new webpack.LoaderOptionsPlugin({
+            options: {
+                coverageReporter: {
+                    dir: './coverage',
+                    reporters: [{
+                            type: 'lcov',
+                            subdir: '.'
+                        },
+                        {
+                            type: 'text-summary'
+                        }
+                    ]
+                },
+                webpackMiddleware: {
+                    stats: "errors-only"
+                }
+            }
+          })
+    ],
     devtool: 'source-map'
 }
