@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import MUI from 'dist/index.js';
+import MUI from '../../dist/main.js';
 
 Vue.use(MUI);
 

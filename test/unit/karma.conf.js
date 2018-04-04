@@ -1,18 +1,26 @@
 var webpack = require('webpack')
 var webpackConf = require("../../webpack.test.config.js")
 
-module.exports = function(config) {
+module.exports = function (config) {
     config.set({
         basePath: '',
         frameworks: ['mocha', 'sinon-chai'],
         files: [
-          'test/unit/**/*.spec.js'
+            './index.js'
         ],
-        exclude: [
-        ],
+        exclude: [],
         preprocessors: {
-          'test/unit/**/*.spec.js': ['webpack','sourcemap']
+            './index.js': ['webpack', 'sourcemap']
         },
+        plugins: [
+            'karma-chrome-launcher',
+            'karma-mocha',
+            'karma-sinon-chai',
+            'karma-webpack',
+            'karma-sourcemap-loader',
+            'karma-spec-reporter',
+            'karma-coverage'
+        ],
         reporters: ['spec', 'coverage'],
         port: 9876,
         colors: true,

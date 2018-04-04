@@ -34,6 +34,12 @@ module.exports = {
             loader: 'html-loader'
         }]
     },
+    resolve: {
+        extensions: ['.js', '.vue'],
+        alias: {
+            'vue$': 'vue/dist/vue.min.js'
+        },
+    },
     plugins: [
         new webpack.LoaderOptionsPlugin({
             options: {
