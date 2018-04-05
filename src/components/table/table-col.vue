@@ -1,3 +1,7 @@
+<template>
+  <col :width="width">
+</template>
+
 <script>
 export default {
     name: "m-table-col",
@@ -15,9 +19,6 @@ export default {
             console.log(conf.content)
         }
         this.$parent.$emit("initCol", conf)
-    },
-    render() {
-        return null;
     }
 }
 </script>

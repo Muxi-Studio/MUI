@@ -1,6 +1,6 @@
 <template>
 <thead>
-    <th v-for="col in columns" v-bind:width=col.width>{{col.label}}</th>
+    <th v-for="col in columns">{{col.label}}</th>
 </thead>
 </template>
 <script>
