@@ -15,6 +15,7 @@ import Select from "./components/forms/select"
 import SelectOpt from "./components/forms/select/select-opt"
 import Col from "./components/grid/col"
 import Row from "./components/grid/row"
+import Switch from "./components/forms/switch"
 
 const install = function (v) {
     v.component(Button.name, Button)
@@ -34,6 +35,7 @@ const install = function (v) {
     v.component(SelectOpt.name, SelectOpt)
     v.component(Col.name, Col)
     v.component(Row.name, Row)
+    v.component(Switch.name, Switch)
 }
 
 // auto install

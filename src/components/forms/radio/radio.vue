@@ -9,11 +9,11 @@
         <span class="m-radio-inner"></span>
         <input
         :value = "label"
-      class="m-radio-origin"
-      type="radio"
-      @focus="focus = true"
-      @blur="focus = false"
-      v-model="model">
+        class="m-radio-origin"
+        type="radio"
+        @focus="focus = true"
+        @blur="focus = false"
+        v-model="model">
       </span>
       <span class="m-radio-text">
         <slot></slot>

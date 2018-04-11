@@ -33,6 +33,9 @@ const testData = [{
 
 describe('Table', () => {
     describe('rendering data', () => {
+        after(() => {
+            destroyVM(vm);
+          });
         const vm = createVue({
             data() {
                 return {
@@ -41,7 +44,7 @@ describe('Table', () => {
             },
             template: `
             <m-table :data="testData">
-                <m-table-col prop="kind" label="分类" width="180"></m-table-col>
+                <m-table-col prop="kind" label="分类"></m-table-col>
                 <m-table-col prop="title" label="标题"></m-table-col>
                 <m-table-col prop="author" label="作者"></m-table-col>
                 <m-table-col prop="likes" label="浏览量"></m-table-col>
@@ -60,5 +63,34 @@ describe('Table', () => {
             })
             expect(tds.map(td => td.textContent)).to.eql(testDataArr)
         })
+    })
+    describe('Events',()=>{
+        const vm = createTest({
+            data() {
+                return {
+                    testData: testData
+                }
+            },
+            template: `
+            <m-table :data="testData">
+                <m-table-col prop="kind" label="分类"></m-table-col>
+                <m-table-col prop="title" label="标题"></m-table-col>
+                <m-table-col prop="author" label="作者"></m-table-col>
+                <m-table-col prop="likes" label="浏览量"></m-table-col>
+                <m-table-col prop="active" label="操作">
+                    <template scope="row">
+                        <m-button type="error" :on-click="onclick.bind(this, row.index)">Delete</m-button>
+                    </template>
+                </m-table-col>
+            </m-table>
+          `,
+        }, null,true)
+        it.only('select a row',done=>{
+            setTimeout(_ => {
+                console.log(vm.$el.querySelector('.m-button'))
+                done()
+                // expect(vm.status === "clicked").to.be.true;
+            })
+        });
     })
 })
