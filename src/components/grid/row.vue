@@ -1,16 +1,19 @@
 <script>
 export default {
     name: "m-row",
-    functional: true,
-    render(createElement, context) {
-        console.log(context)
+    render(createElement){
         return createElement(
             "div", {
                 "class": {
                     "m-row": true,
                 },
+                style:{
+                    marginLeft:`-${this.gutter / 2}px`,
+                    marginRight:`-${this.gutter / 2}px`,
+                    justifyContent:this.justify,
+                }
             },
-            context.slots().default,
+            this.$slots.default,
         )
     },
     props: {
@@ -18,6 +21,10 @@ export default {
             type: Number,
             default: 0,
         },
+        justify: {
+            type: String,
+            default:"flex-start"
+        }
     },
 }
 </script>
@@ -25,7 +32,7 @@ export default {
 @import '../../scss/common/color.scss';
 @import '../../scss/common/font.scss';
 .m-row {
-    width: 100%;
     display: flex;
+    box-sizing: border-box;
 }
 </style>
