@@ -5,7 +5,6 @@
 	</li>
 </template>
 <script>
-import { bus } from "../../../emitter/bus"
 import hoverOpen from "./directives/hover-open"
 import hoverClose from "./directives/hover-close"
 import menuMixin from "./mixin"
@@ -22,9 +21,8 @@ export default {
     mixins: [menuMixin],
     created() {
         this.trigger = !(this.rootMenu.trigger === "click")
-        // bus.$emit("addTag", this.index)
-        bus.$on("update", this.updateFocus)
-        bus.$on("updateArray", this.updateFocusArray)
+        this.rootMenu.$on("update", this.updateFocus)
+        this.rootMenu.$on("updateArray", this.updateFocusArray)
     },
     directives: {
         HoverOpen: hoverOpen,

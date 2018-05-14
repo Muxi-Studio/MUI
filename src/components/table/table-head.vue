@@ -4,7 +4,6 @@
 </thead>
 </template>
 <script>
-import { bus } from "../../emitter/bus"
 
 export default {
     name: "m-table-head",

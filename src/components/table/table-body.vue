@@ -10,7 +10,6 @@
 </template>
 <script>
 import TableContent from './table-content.vue'
-import { bus } from "../../emitter/bus"
 
 export default {
     name: "m-table-body",

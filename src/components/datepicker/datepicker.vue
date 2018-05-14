@@ -1,10 +1,12 @@
 <template>
-<div>
+<div class="m-datepicker" v-checkregion="onBlur">
     <m-input v-model="model" v-on:onfocus="onFocus"></m-input>
     <m-calendar v-if="calendar" v-on:getcurr="getcurr" :pyear="year" :pmonth="month" :pday="day" ></m-calendar>
 </div>
 </template>
 <script>
+import checkregion from '../../directives/checkregion'
+
 import Mdatepicker from "../forms/input"
 import Mcalendar from "./calendar.vue"
 
@@ -26,9 +28,15 @@ export default {
             currDate: "",
         }
     },
+    directives: {
+        checkregion:checkregion
+    },
     methods: {
         onFocus() {
             this.calendar = true
+        },
+        onBlur(){
+            this.calendar = false
         },
         getcurr(e) {
             this.model = e
@@ -63,4 +71,8 @@ export default {
 <style lang="scss">
 @import '../../scss/common/color.scss';
 @import '../../scss/common/font.scss';
+.m-datepicker{
+    width: 200px;
+    height: 40px;
+}
 </style>

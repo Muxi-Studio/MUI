@@ -1,5 +1,5 @@
 <template>
-	<li class="m-menu-item" @click="selectMenu" v-hover-open="openMethod" v-hover-close="closeMethod"  :class="{ active: active }" v-if="$slots.default || label">
+	<li class="m-menu-item" @click="openMethod" v-hover-open="openMethod" v-hover-close="closeMethod"  :class="{ active: active }" v-if="$slots.default || label">
 		<slot name="title"></slot>
 		<template v-if="!$slots.title"><a>{{label}}</a></template>
 		<span class="arrow">></span>
@@ -11,8 +11,6 @@
 	</li>
 </template>
 <script>
-import { bus } from "../../../emitter/bus"
-
 import hoverOpen from "./directives/hover-open"
 import hoverClose from "./directives/hover-close"
 import menuMixin from "./mixin"
@@ -33,19 +31,18 @@ export default {
     mixins: [menuMixin],
     created() {
         this.trigger = !(this.rootMenu.trigger === "click")
-        // bus.$emit("addTag", this.index)
-        bus.$on("update", this.updateFocus)
-        bus.$on("updateArray", this.updateFocusArray)
+        this.rootMenu.$on("update", this.updateFocus)
+        this.rootMenu.$on("updateArray", this.updateFocusArray)
     },
-    watch: {
-        active() {
-            if (this.active === true) {
-                this.$emit("open", this.index)
-            } else {
-                this.$emit("close", this.index)
-            }
-        },
-    },
+    // watch: {
+    //     active() {
+    //         if (this.active === true) {
+    //             this.$emit("open", this.index)
+    //         } else {
+    //             this.$emit("close", this.index)
+    //         }
+    //     },
+    // },
 }
 </script>
 <style lang="scss">

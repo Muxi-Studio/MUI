@@ -1,9 +1,9 @@
 <template>
 <div class="m-calendar">
     <div class="m-calendar-bar">
-        <a class="arrow-icon" @click="yearsub"><<</a>
+        <a class="arrow-icon" @click="yearsub">{{'&lt;'}}</a>
         <a class="arrow-icon" @click="monthsub">
-            <a v-show="monthshow"><</a>
+            <a v-show="monthshow">{{'&lt;&lt;'}}</a>
         </a>
         <div class="m-calendar-ym">
             <a class="m-calendar-tag m-calendar-tag-content m-calendar-tag-year" @click="yearbtn">{{ year }}</a> 
@@ -12,9 +12,9 @@
             <a class="m-calendar-tag">月</a>
         </div>
         <a class="arrow-icon" @click="monthadd" v-if="monthbtn">
-            <a v-show="monthshow">></a>
+            <a v-show="monthshow">{{'&gt;'}}</a>
         </a>
-        <a class="arrow-icon" @click="yearadd">>></a>
+        <a class="arrow-icon" @click="yearadd">{{'&gt;&gt;'}}</a>
     </div>
     <m-daypicker :pyear="year" :pmonth="month" v-if="selectday" v-on:daychange="daychange"></m-daypicker>
     <m-yearpicker :pyear="year" v-if="selectyear" v-on:yearchange="yearchange"></m-yearpicker>
@@ -25,7 +25,6 @@
 import DayPicker from "./picker/daypicker.vue"
 import YearPicker from "./picker/yearpicker.vue"
 import MonthPicker from "./picker/monthpicker.vue"
-import bus from "../../emitter/bus"
 
 export default {
     name: "m-calendar",
@@ -57,16 +56,6 @@ export default {
         this.month = this.pmonth
         this.day = this.pday
         this.currDate = `${this.year}-${this.month}-${this.day}`
-    },
-    updated() {
-        // console.log(this.selectday)
-        // if (this.selectday) {
-        //     this.monthshow = true
-        // } else {
-        //     this.monthshow = false
-        // }
-        // this.currDate = `${this.year}-${this.month}-${this.day}`
-        // this.$emit("getcurr", this.currDate)
     },
     computed: {
         monthshow() {
@@ -153,7 +142,10 @@ $arrow-icon-width:16px;
     padding: $calendar-padding;
     box-sizing:content-box;
     border: 1px solid $secondary-color;
+    position: relative;
+    background: white;
     border-radius: 4px;
+    z-index: 4000;
     .m-calendar-bar{
         width:100%;
         font-size: 0;

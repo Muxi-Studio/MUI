@@ -2,7 +2,7 @@ module.exports = {
     methods: {
         selectMenu(e) {
             this.openMethod(e)
-            this.$emit("select", this.index)
+            this.rootMenu.$emit("select", this.index)
         },
         updateFocus(e) {
             if (this.index !== e) {

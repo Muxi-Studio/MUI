@@ -8,7 +8,6 @@
 </div>
 </template>
 <script>
-import { bus } from "../../emitter/bus";
 import TableBody from "./table-body.vue";
 import TableHead from "./table-head.vue";
 var index = 0;

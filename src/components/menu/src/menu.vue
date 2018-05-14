@@ -4,8 +4,6 @@
   </ul>
 </template>
 <script>
-import { bus } from "../../../emitter/bus"
-
 var num = ''
 var store = []
 
@@ -17,33 +15,33 @@ export default {
             default: "hover",
         },
     },
-    created() {
-        // bus.$on("addTag", this.add)
-    },
-    mounted() {
-        this.initOpen("1-2-2")
-    },
-    data() {
-        return {
-            // state: {},
+    data(){
+        return{
+            current:""
         }
     },
+    mounted() {
+        this.initOpen("1-2-2"),
+        this.$on("select",this.change)
+    }, 
     methods: {
         add(e) {
             this.state[e] = false
         },
         modify(index) {
+            this.current = index
             if (index.length > 1) {
                 this.subOpen(index)
             } else {
-                bus.$emit("update", index)
+                this.$emit("update", index)
             }
         },
         initOpen(index) {
+            this.current = index
             if (index.length > 1) {
                 this.subOpen(index)
-            } else {
-                bus.$emit("update", index)
+            } else {                
+                this.$emit("update", index)
             }
         },
         subOpen(index) {
@@ -55,17 +53,12 @@ export default {
             this.handleArray()
         },
         handleArray() {
-            // Object.keys(this.state).forEach(this.checkIndexArray)
-            bus.$emit("updateArray", store)
+            this.$emit("updateArray", store)
             store = []
         },
-        // checkIndexArray(e) {
-        //     if (store.indexOf(e) !== -1) {
-        //         this.state[e] = true
-        //     } else {
-        //         this.state[e] = false
-        //     }
-        // },
+        change(index){
+            console.log(index)
+        }
     },
 }
 </script>
