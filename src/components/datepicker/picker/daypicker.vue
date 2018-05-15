@@ -15,7 +15,7 @@
 	</div>
 </template>
 <script>
-import bus from "../../../emitter/bus"
+// import bus from "../../../emitter/bus"
 
 export default {
     props: {
@@ -35,8 +35,8 @@ export default {
         this.getDayRange(this.year, this.month)
     },
     mounted() {
-        bus.$on("yearbtn", this.updateyear)
-        bus.$on("monthbtn", this.updatemonth)
+        // bus.$on("yearbtn", this.updateyear)
+        // bus.$on("monthbtn", this.updatemonth)
     },
     methods: {
         getDayCount(year, month) {

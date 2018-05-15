@@ -6,7 +6,7 @@
 	</div>
 </template>
 <script>
-import bus from "../../../emitter/bus"
+// import bus from "../../../emitter/bus"
 
 export default {
     props: {
@@ -21,7 +21,7 @@ export default {
     mounted() {
         this.year = this.pyear
         this.countYear()
-        bus.$on("yearpage", this.turnpage)
+        // bus.$on("yearpage", this.turnpage)
     },
     methods: {
         chooseYear(year) {
