@@ -16,9 +16,9 @@
         </a>
         <a class="arrow-icon" @click="yearadd">{{'&gt;&gt;'}}</a>
     </div>
-    <m-daypicker :pyear="year" :pmonth="month" v-if="selectday" v-on:daychange="daychange"></m-daypicker>
-    <m-yearpicker :pyear="year" v-if="selectyear" v-on:yearchange="yearchange"></m-yearpicker>
-    <m-monthpicker :month="month" v-if="selectmonth" v-on:monthchange="monthchange"></m-monthpicker>
+    <m-daypicker ref="daypicker" :pyear="year" :pmonth="month" v-if="selectday" v-on:daychange="daychange"></m-daypicker>
+    <m-yearpicker ref="yearpicker" :pyear="year" v-if="selectyear" v-on:yearchange="yearchange"></m-yearpicker>
+    <m-monthpicker ref="monthpicker" :month="month" v-if="selectmonth" v-on:monthchange="monthchange"></m-monthpicker>
 </div>
 </template>
 <script>
@@ -96,19 +96,23 @@ export default {
         yearsub() {
             if (!this.selectyear) {
                 this.year -= 1
-                bus.$emit("yearbtn", this.year)
+                this.$refs.daypicker.updateyear(this.year)
+                // bus.$emit("yearbtn", this.year)
             } else {
                 this.year -= 10
-                bus.$emit("yearpage", this.year)
+                this.$refs.yearpicker.turnpage(this.year)               
+                // bus.$emit("yearpage", this.year)
             }
         },
         yearadd() {
             if (!this.selectyear) {
                 this.year += 1
-                bus.$emit("yearbtn", this.year)
+                this.$refs.daypicker.updateyear(this.year)
+                // bus.$emit("yearbtn", this.year)
             } else {
                 this.year += 10
-                bus.$emit("yearpage", this.year)
+                this.$refs.yearpicker.turnpage(this.year)
+                // bus.$emit("yearpage", this.year)
             }
         },
         monthsub() {
@@ -117,7 +121,8 @@ export default {
                 this.month = 11
                 this.year -= 1
             }
-            bus.$emit("monthbtn", this.month)
+            this.$refs.daypicker.updatemonth(this.month)
+            // bus.$emit("monthbtn", this.month)
         },
         monthadd() {
             this.month += 1
@@ -125,7 +130,8 @@ export default {
                 this.month = 0
                 this.year += 1
             }
-            bus.$emit("monthbtn", this.month)
+            this.$refs.daypicker.updatemonth(this.month)
+            // bus.$emit("monthbtn", this.month)
         },
     },
 }

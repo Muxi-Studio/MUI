@@ -31,6 +31,7 @@ Then
 
 ```
 import MUI from "muxiui"
+import 'muxiui/dist/style.js'
 
 Vue.use(MUI)
 

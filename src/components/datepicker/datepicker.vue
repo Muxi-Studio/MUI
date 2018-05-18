@@ -45,8 +45,17 @@ export default {
             this.year = this.currDate.getFullYear()
             this.month = this.currDate.getMonth()
             this.day = this.currDate.getDate()
+            
             this.model = `${this.year}-${this.month + 1}-${this.day}`
         },
+        update(){
+            if (this.value) {
+                this.currDate = new Date(Date.parse(this.value))
+            } else {
+                this.currDate = new Date()
+            }
+            this.getdate()
+        }
     },
     computed: {
         model: {
@@ -59,12 +68,7 @@ export default {
         },
     },
     mounted() {
-        if (this.value) {
-            this.currDate = new Date(Date.parse(this.value))
-        } else {
-            this.currDate = new Date()
-        }
-        this.getdate()
+        this.update()
     },
 }
 </script>
