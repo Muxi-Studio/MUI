@@ -3310,6 +3310,7 @@ var render = function() {
       _vm._v(" "),
       _vm.selectday
         ? _c("m-daypicker", {
+            ref: "daypicker",
             attrs: { pyear: _vm.year, pmonth: _vm.month },
             on: { daychange: _vm.daychange }
           })
@@ -3317,6 +3318,7 @@ var render = function() {
       _vm._v(" "),
       _vm.selectyear
         ? _c("m-yearpicker", {
+            ref: "yearpicker",
             attrs: { pyear: _vm.year },
             on: { yearchange: _vm.yearchange }
           })
@@ -3324,6 +3326,7 @@ var render = function() {
       _vm._v(" "),
       _vm.selectmonth
         ? _c("m-monthpicker", {
+            ref: "monthpicker",
             attrs: { month: _vm.month },
             on: { monthchange: _vm.monthchange }
           })
@@ -5614,19 +5617,19 @@ exports.default = {
         yearsub: function yearsub() {
             if (!this.selectyear) {
                 this.year -= 1;
-                bus.$emit("yearbtn", this.year);
+                this.$refs.daypicker.updateyear(this.year);
             } else {
                 this.year -= 10;
-                bus.$emit("yearpage", this.year);
+                this.$refs.yearpicker.turnpage(this.year);
             }
         },
         yearadd: function yearadd() {
             if (!this.selectyear) {
                 this.year += 1;
-                bus.$emit("yearbtn", this.year);
+                this.$refs.daypicker.updateyear(this.year);
             } else {
                 this.year += 10;
-                bus.$emit("yearpage", this.year);
+                this.$refs.yearpicker.turnpage(this.year);
             }
         },
         monthsub: function monthsub() {
@@ -5635,7 +5638,7 @@ exports.default = {
                 this.month = 11;
                 this.year -= 1;
             }
-            bus.$emit("monthbtn", this.month);
+            this.$refs.daypicker.updatemonth(this.month);
         },
         monthadd: function monthadd() {
             this.month += 1;
@@ -5643,7 +5646,7 @@ exports.default = {
                 this.month = 0;
                 this.year += 1;
             }
-            bus.$emit("monthbtn", this.month);
+            this.$refs.daypicker.updatemonth(this.month);
         }
     }
 };
@@ -5709,7 +5712,16 @@ exports.default = {
             this.year = this.currDate.getFullYear();
             this.month = this.currDate.getMonth();
             this.day = this.currDate.getDate();
+
             this.model = this.year + "-" + (this.month + 1) + "-" + this.day;
+        },
+        update: function update() {
+            if (this.value) {
+                this.currDate = new Date(Date.parse(this.value));
+            } else {
+                this.currDate = new Date();
+            }
+            this.getdate();
         }
     },
     computed: {
@@ -5723,12 +5735,7 @@ exports.default = {
         }
     },
     mounted: function mounted() {
-        if (this.value) {
-            this.currDate = new Date(Date.parse(this.value));
-        } else {
-            this.currDate = new Date();
-        }
-        this.getdate();
+        this.update();
     }
 };
 
@@ -6658,17 +6665,18 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+var eventID = 0;
+
 exports.default = {
-    bind: function bind(el, binding, vnode) {
-        el.event = function (event) {
+    bind: function bind(el, binding) {
+        eventID = document.body.addEventListener("click", function (event) {
             if (!(el === event.target || el.contains(event.target))) {
                 binding.value();
             }
-        };
-        document.body.addEventListener('click', el.event);
+        });
     },
-    unbind: function unbind(el) {
-        document.body.removeEventListener('click', el.event);
+    unbind: function unbind() {
+        document.body.removeEventListener("click", eventID);
     }
 };
 
