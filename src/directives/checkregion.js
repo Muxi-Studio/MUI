@@ -1,4 +1,4 @@
-let eventID = 0
+let eventID
 
 export default {
     bind(el, binding) {
