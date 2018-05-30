@@ -1125,6 +1125,7 @@ module.exports = {
     methods: {
         selectMenu: function selectMenu(e) {
             this.openMethod(e);
+            this.$router.push(this.index);
             this.rootMenu.$emit("select", this.index);
         },
         updateFocus: function updateFocus(e) {
@@ -6665,7 +6666,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-var eventID = 0;
+var eventID = void 0;
 
 exports.default = {
     bind: function bind(el, binding) {

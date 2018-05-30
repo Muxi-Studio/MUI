@@ -2,6 +2,7 @@ module.exports = {
     methods: {
         selectMenu(e) {
             this.openMethod(e)
+            this.$router.push(this.index)
             this.rootMenu.$emit("select", this.index)
         },
         updateFocus(e) {
