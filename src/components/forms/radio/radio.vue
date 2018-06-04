@@ -25,8 +25,12 @@
 export default {
     name: "m-radio",
     props: {
-        value: String,
-        label: String,
+        value: {
+            type:[String, Number, Boolean]
+        },
+        label: {
+            type:[String, Number, Boolean]
+        }
     },
     data() {
         return {
