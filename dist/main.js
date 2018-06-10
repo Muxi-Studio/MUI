@@ -4060,7 +4060,7 @@ var render = function() {
             "td",
             { key: col.id },
             [
-              item[col.prop]
+              item[col.prop] != null
                 ? [_vm._v(_vm._s(item[col.prop]))]
                 : _c("m-table-content", {
                     attrs: { id: item.id, item: item, content: col.content }
@@ -6032,8 +6032,12 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     name: "m-radio",
     props: {
-        value: String,
-        label: String
+        value: {
+            type: [String, Number, Boolean]
+        },
+        label: {
+            type: [String, Number, Boolean]
+        }
     },
     data: function data() {
         return {
@@ -6066,8 +6070,12 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     name: "m-option",
     props: {
-        value: [String, Number],
-        label: String
+        value: {
+            type: [String, Number, Boolean]
+        },
+        label: {
+            type: [String, Number, Boolean]
+        }
     }
 };
 
@@ -6084,9 +6092,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     name: "m-select",
     props: {
-        value: [String, Number],
-        name: String,
-        defaultvalue: String
+        value: {
+            type: [String, Number, Boolean]
+        },
+        name: String
     },
     data: function data() {
         return {
