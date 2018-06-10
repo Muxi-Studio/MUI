@@ -10,9 +10,10 @@
 export default {
     name: "m-select",
     props: {
-        value: [String,Number],
-        name: String,
-        defaultvalue:String
+        value: {
+            type: [String, Number, Boolean]
+        },
+        name: String
     },
     data() {
         return {

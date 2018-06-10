@@ -3935,6 +3935,7 @@ var render = function() {
           }
         ],
         staticClass: "m-select",
+        attrs: { name: _vm.name },
         on: {
           change: [
             function($event) {
@@ -6065,7 +6066,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     name: "m-option",
     props: {
-        value: String,
+        value: [String, Number],
         label: String
     }
 };
@@ -6083,14 +6084,18 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     name: "m-select",
     props: {
-        value: String,
-        name: String
+        value: [String, Number],
+        name: String,
+        defaultvalue: String
     },
     data: function data() {
         return {
             focus: false,
-            text: '选择内容'
+            text: ""
         };
+    },
+    mounted: function mounted() {
+        this.text = this.defaultvalue || "选择内容";
     },
 
     computed: {

@@ -5,8 +5,12 @@
 export default {
     name: "m-option",
     props: {
-        value: [String,Number],
-        label:String,
+        value: {
+            type:[String, Number, Boolean]
+        },
+        label: {
+            type:[String, Number, Boolean]
+        }
     },
 }
 </script>
