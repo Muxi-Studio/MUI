@@ -1,7 +1,7 @@
 <template>
 <div class="m-select-wrap" v-bind:style="bgColor">
     <label v-bind:style="txtColor">{{text}}</label>
-    <select v-model="model" class="m-select" @change="change($event.target.options)" @focus="focus=true" @blur="focus=false">
+    <select v-model="model" class="m-select" :name="name" @change="change($event.target.options)" @focus="focus=true" @blur="focus=false">
         <slot></slot>
     </select>
 </div>
@@ -10,14 +10,18 @@
 export default {
     name: "m-select",
     props: {
-        value: String,
-        name: String
+        value: [String,Number],
+        name: String,
+        defaultvalue:String
     },
     data() {
         return {
             focus: false,
-            text: '选择内容',
+            text:""
         }
+    },
+    mounted(){
+        this.text = this.defaultvalue||"选择内容"
     },
     computed: {
         model: {

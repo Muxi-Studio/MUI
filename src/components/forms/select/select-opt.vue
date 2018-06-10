@@ -5,7 +5,7 @@
 export default {
     name: "m-option",
     props: {
-        value: String,
+        value: [String,Number],
         label:String,
     },
 }
