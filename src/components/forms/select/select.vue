@@ -13,7 +13,8 @@ export default {
         value: {
             type: [String, Number, Boolean]
         },
-        name: String
+        name: String,
+        defaultvalue:String
     },
     data() {
         return {

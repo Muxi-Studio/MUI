@@ -4060,7 +4060,7 @@ var render = function() {
             "td",
             { key: col.id },
             [
-              item[col.prop] != null
+              item[col.prop] !== undefined
                 ? [_vm._v(_vm._s(item[col.prop]))]
                 : _c("m-table-content", {
                     attrs: { id: item.id, item: item, content: col.content }
@@ -6095,7 +6095,8 @@ exports.default = {
         value: {
             type: [String, Number, Boolean]
         },
-        name: String
+        name: String,
+        defaultvalue: String
     },
     data: function data() {
         return {
