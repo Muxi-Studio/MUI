@@ -1,7 +1,7 @@
 {
   "name": "muxiui",
   "version": "0.1.0",
-  "description": "",
+  "description": "Muxistudio's UI lib",
   "main": "./index.js",
   "scripts": {
     "precommit": "npm test",
@@ -34,7 +34,7 @@
     "mocha": "^5.0.4",
     "sinon": "^4.4.6",
     "sinon-chai": "^3.0.0",
-    "vue": "^2.4.4",
+    "vue": "^2.5.16",
     "vue-html-loader": "^1.2.4"
   },
   "devDependencies": {

@@ -16,49 +16,51 @@ import SelectOpt from "./components/forms/select/select-opt"
 import Col from "./components/grid/col"
 import Row from "./components/grid/row"
 import Switch from "./components/forms/switch"
+import Spinner from "./components/spinner"
 
-const install = function (v) {
-    v.component(Button.name, Button)
-    v.component(Toast.name, Toast)
-    v.component(Input.name, Input)
-    v.component(Textarea.name, Textarea)
-    v.component(Radio.name, Radio)
-    v.component(Checkbox.name, Checkbox)
-    v.component(CheckboxGroup.name, CheckboxGroup)
-    v.component(DatePicker.name, DatePicker)
-    v.component(Menu.name, Menu)
-    v.component(Menuitem.name, Menuitem)
-    v.component(SubMenu.name, SubMenu)
-    v.component(Tablecol.name, Tablecol)
-    v.component(TableGroup.name, TableGroup)
-    v.component(Select.name, Select)
-    v.component(SelectOpt.name, SelectOpt)
-    v.component(Col.name, Col)
-    v.component(Row.name, Row)
-    v.component(Switch.name, Switch)
+const install = function(v) {
+  v.component(Button.name, Button)
+  v.component(Toast.name, Toast)
+  v.component(Input.name, Input)
+  v.component(Textarea.name, Textarea)
+  v.component(Radio.name, Radio)
+  v.component(Checkbox.name, Checkbox)
+  v.component(CheckboxGroup.name, CheckboxGroup)
+  v.component(DatePicker.name, DatePicker)
+  v.component(Menu.name, Menu)
+  v.component(Menuitem.name, Menuitem)
+  v.component(SubMenu.name, SubMenu)
+  v.component(Tablecol.name, Tablecol)
+  v.component(TableGroup.name, TableGroup)
+  v.component(Select.name, Select)
+  v.component(SelectOpt.name, SelectOpt)
+  v.component(Col.name, Col)
+  v.component(Row.name, Row)
+  v.component(Switch.name, Switch)
+  v.component(Spinner.name, Spinner)
 }
 
 // auto install
 if (typeof window !== "undefined" && window.Vue) {
-    install(window.Vue)
+  install(window.Vue)
 }
 
 module.exports = {
-    install,
-    Button,
-    Toast,
-    Input,
-    Textarea,
-    Radio,
-    Checkbox,
-    CheckboxGroup,
-    DatePicker,
-    Menu,
-    Menuitem,
-    SubMenu,
-    TableGroup,
-    Select,
-    SelectOpt,
-    Col,
-    Row,
+  install,
+  Button,
+  Toast,
+  Input,
+  Textarea,
+  Radio,
+  Checkbox,
+  CheckboxGroup,
+  DatePicker,
+  Menu,
+  Menuitem,
+  SubMenu,
+  TableGroup,
+  Select,
+  SelectOpt,
+  Col,
+  Row
 }
