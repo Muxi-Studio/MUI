@@ -1,6 +1,6 @@
 {
   "name": "muxiui",
-  "version": "0.1.0",
+  "version": "0.1.0-beta1",
   "description": "Muxistudio's UI lib",
   "main": "./index.js",
   "scripts": {
@@ -14,15 +14,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Muxi-Studio/MUI_FE.git"
+    "url": "git+https://github.com/Muxi-Studio/MUI.git"
   },
   "author": "Muxi FE",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Muxi-Studio/MUI_FE/issues"
+    "url": "https://github.com/Muxi-Studio/MUI/issues"
   },
-  "homepage": "https://github.com/Muxi-Studio/MUI_FE#readme",
+  "homepage": "https://github.com/Muxi-Studio/MUI#readme",
   "dependencies": {
+    "vue": "^2.5.16"
+  },
+  "devDependencies": {
     "chai": "^4.1.2",
     "karma": "^2.0.0",
     "karma-chrome-launcher": "^2.2.0",
@@ -35,10 +38,7 @@
     "mocha": "^5.0.4",
     "sinon": "^4.4.6",
     "sinon-chai": "^3.0.0",
-    "vue": "^2.5.16",
-    "vue-html-loader": "^1.2.4"
-  },
-  "devDependencies": {
+    "vue-html-loader": "^1.2.4",
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
     "babel-plugin-transform-runtime": "^6.12.0",
