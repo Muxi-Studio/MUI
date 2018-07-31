@@ -7,74 +7,78 @@
 </template>
 <script>
 export default {
-    name: "m-input",
-    props: {
-        value: String,
-        message: {
-            type: String,
-            default: null,
-        },
-        placeholder: {
-            type: String,
-            default: null,
-        },
-        label: {
-            type: String,
-            default: null,
-        },
+  name: "m-input",
+  props: {
+    value: String,
+    message: {
+      type: String,
+      default: null
     },
-    methods: {
-        onBlur() {
-            this.$emit("onblur")
-        },
-        onFocus() {
-            this.$emit("onfocus")
-        },
-        updateValue(value) {
-            this.$emit("input", value)
-        },
+    placeholder: {
+      type: String,
+      default: null
     },
+    label: {
+      type: String,
+      default: null
+    }
+  },
+  methods: {
+    onBlur() {
+      this.$emit("onblur")
+    },
+    onFocus() {
+      this.$emit("onfocus")
+    },
+    updateValue(value) {
+      this.$emit("input", value)
+    }
+  }
 }
 </script>
 <style lang="scss">
-@import '../../../scss/common/color.scss';
-@import '../../../scss/common/font.scss';
-.m-input{
-    width: 200px;
+@import "../../../scss/common/color.scss";
+@import "../../../scss/common/font.scss";
+.m-input {
+  width: 200px;
+  &.vertical {
+    display: flex;
+    align-items: center;
+  }
 }
-.m-text{
-    width: 100%;
-    height: 40px;
-    padding: 0px 10px;
-    border-radius: 4px;
-    font-size: $fontsize-button;
-    box-sizing:border-box;
-    border: 1px solid $secondary-color;
-    color:$text-darker;
-    outline: none;
-    &:focus{
-        color:$text;
-        border-color: $primary-darker;
-        & + .m-message{
-            color:$primary-darker;
-        }
+.m-text {
+  width: 100%;
+  height: 40px;
+  padding: 0px 10px;
+  border-radius: 4px;
+  font-size: $fontsize-button;
+  box-sizing: border-box;
+  border: 1px solid $secondary-color;
+  color: $text-darker;
+  outline: none;
+  &:focus {
+    color: $text;
+    border-color: $primary-darker;
+    & + .m-message {
+      color: $primary-darker;
     }
-    &::placeholder{
-        color:$secondary-color;
-    }
+  }
+  &::placeholder {
+    color: $secondary-color;
+  }
 }
-.m-label{
-    display: block;
-    font-weight: bold;
-    width: 100%;
-    height: 30px;
-    text-indent: 2px;
-    font-size: $fontsize-button;
+.m-label {
+  display: block;
+  font-weight: bold;
+  width: 100%;
+  height: 30px;
+  text-indent: 2px;
+  font-size: $fontsize-button;
 }
-.m-message{
-    margin:2px 0px 0px 0px;
-    text-indent: 2px;
-    color:$secondary-color;
-    font-size: $fontsize-content;
+.m-message {
+  margin: 2px 0px 0px 0px;
+  text-indent: 2px;
+  color: $secondary-color;
+  font-size: $fontsize-content;
 }
 </style>
